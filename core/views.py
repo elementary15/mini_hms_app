@@ -83,7 +83,7 @@ def connect_google_calendar(request):
     flow = Flow.from_client_secrets_file(
         '/etc/secrets/credentials.json',
         scopes=['https://www.googleapis.com/auth/calendar'],
-        redirect_uri='http://localhost:8001/google-callback/'
+        redirect_uri='https://mini-hms-app.onrender.com/google-callback/'
     )
 
     authorization_url, _ = flow.authorization_url(
