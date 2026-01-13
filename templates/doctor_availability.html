@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>My Availability</h2>
+<p class="muted">Your upcoming available slots</p>
+
+{% if slots %}
+{% for slot in slots %}
+<div class="card" style="display:flex; justify-content:space-between; align-items:center;">
+    <div>
+        <strong>{{ slot.date }}</strong><br>
+        <span class="muted">
+            {{ slot.start_time }} – {{ slot.end_time }}
+        </span>
+    </div>
+
+    {% if slot.is_booked %}
+        <span class="pill booked">Booked</span>
+    {% else %}
+        <span class="pill free">Free</span>
+    {% endif %}
+</div>
+{% endfor %}
+
+{% else %}
+    <div class="card">
+        <p class="muted">No availability slots added yet.</p>
+    </div>
+{% endif %}
+
+<hr style="margin: 40px 0;">
+
+<h3>Add New Availability</h3>
+<p class="muted">Create a new time slot for patients to book</p>
+
+<div class="card">
+    <form method="post">
+        {% csrf_token %}
+
+        <label>Date</label><br>
+        {{ form.date }}<br><br>
+
+        <label>Start Time</label><br>
+        {{ form.start_time }}<br><br>
+
+        <label>End Time</label><br>
+        {{ form.end_time }}<br><br>
+
+        <button class="button" type="submit">
+            Add Slot
+        </button>
+    </form>
+</div>
+
+{% endblock %}

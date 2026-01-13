@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card" style="
+    max-width: 420px;
+    margin: 80px auto;
+">
+    <h2>Create Account</h2>
+    <p class="muted">Join Mini HMS</p>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label>Username</label><br>
+        {{ form.username }}<br><br>
+
+        <label>Email</label><br>
+        {{ form.email }}<br><br>
+
+        <label>Password</label><br>
+        {{ form.password }}<br><br>
+
+        <label>Role</label><br>
+        {{ form.role }}<br><br>
+
+        <button class="button" type="submit" style="width: 100%;">
+            Sign Up
+        </button>
+    </form>
+
+    <br>
+    <p class="muted">
+        Already have an account?
+        <a href="/login/">Login</a>
+    </p>
+</div>
+{% endblock %}

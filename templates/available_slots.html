@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Available Appointments</h2>
+
+{% if slots %}
+    {% for slot in slots %}
+        <div class="card">
+            <strong>Dr. {{ slot.doctor.user.username }}</strong><br>
+            <span class="muted">
+                {{ slot.date }} |
+                {{ slot.start_time }} – {{ slot.end_time }}
+            </span>
+            <br><br>
+            <a class="button"
+               onclick="return confirm('Confirm booking?')"
+               href="/patient/book/{{ slot.id }}/">
+                Book Appointment
+            </a>
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="card">
+        <p class="muted">No available slots at the moment.</p>
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card" style="text-align:center; padding:40px;">
+    <h1 style="margin-bottom:10px;">
+        Mini Hospital Management System
+    </h1>
+
+    <p class="muted" style="font-size:16px;">
+        A simple platform to manage doctor availability,
+        patient appointments, and Google Calendar sync.
+    </p>
+
+    <br><br>
+
+    <div style="display:flex; justify-content:center; gap:15px;">
+        <a class="button" href="/login/">Login</a>
+        <a class="button" href="/signup/">Create Account</a>
+    </div>
+</div>
+
+<div class="card">
+    <h3>For Doctors</h3>
+    <ul class="muted">
+        <li>Set your availability</li>
+        <li>Manage appointments</li>
+        <li>Sync with Google Calendar</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h3>For Patients</h3>
+    <ul class="muted">
+        <li>View available slots</li>
+        <li>Book appointments</li>
+        <li>Get calendar & email reminders</li>
+    </ul>
+</div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>My Appointments</h2>
+<p class="muted">Your upcoming hospital visits</p>
+
+{% if bookings %}
+    {% for booking in bookings %}
+        <div class="card">
+            <h3>
+                {{ booking.slot.date }}
+            </h3>
+
+            <p class="muted">
+                {{ booking.slot.start_time }} – {{ booking.slot.end_time }}
+            </p>
+
+            <p>
+                <strong>Doctor:</strong>
+                Dr. {{ booking.doctor.user.username }}
+            </p>
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="card">
+        <p class="muted">
+            You have no appointments yet.
+        </p>
+        <a class="button" href="/patient/slots/">
+            Book an Appointment
+        </a>
+    </div>
+{% endif %}
+
+{% endblock %}
