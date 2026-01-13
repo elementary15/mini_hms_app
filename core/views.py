@@ -81,7 +81,7 @@ import os
 @login_required
 def connect_google_calendar(request):
     flow = Flow.from_client_secrets_file(
-        'credentials.json',
+        '/etc/secrets/credentials.json',
         scopes=['https://www.googleapis.com/auth/calendar'],
         redirect_uri='http://localhost:8001/google-callback/'
     )
@@ -99,7 +99,7 @@ def connect_google_calendar(request):
 @login_required
 def google_callback(request):
     flow = Flow.from_client_secrets_file(
-        'credentials.json',
+        '/etc/secrets/credentials.json',
         scopes=['https://www.googleapis.com/auth/calendar'],
         redirect_uri='http://localhost:8001/google-callback/'
     )
