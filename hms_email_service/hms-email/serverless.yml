@@ -1,0 +1,23 @@
+org: shamanth
+service: hms-email
+
+provider:
+  name: aws
+  runtime: python3.10
+  environment:
+    SMTP_USER: ${env:SMTP_USER}
+    SMTP_PASS: ${env:SMTP_PASS}
+
+functions:
+  sendEmail:
+    handler: handler.handler
+    timeout: 30
+    events:
+      - httpApi:
+          path: /send-email
+          method: post
+
+plugins:
+  - serverless-offline
+
+useDotenv: true
